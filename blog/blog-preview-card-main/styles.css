@@ -1,0 +1,151 @@
+/* figtree-500 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Figtree";
+  font-style: normal;
+  font-weight: 500;
+  src: url("./fonts/figtree-v5-latin-500.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* figtree-800 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Figtree";
+  font-style: normal;
+  font-weight: 800;
+  src: url("./fonts/figtree-v5-latin-800.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+:root {
+  --spacing-200: 16px;
+  --spacing-150: 12px;
+  --spacing-100: 8px;
+  --spacing-50: 4px;
+  --text-preset-1: calc(24 / 16 * 1rem);
+  --text-preset-2: 1rem;
+  --text-preset-3: calc(14 / 16 * 1rem);
+  --yellow: hsl(47, 88%, 63%);
+  --grey-950: hsl(0, 0%, 7%);
+  --grey-500: hsl(0, 0%, 42%);
+  --card-width: min(384px, 100% - calc(4 * var(--spacing-150)));
+}
+
+html {
+  --font-sans-serif: -apple-system, BlinkMacSystemFont, avenir next, avenir,
+    segoe ui, helvetica neue, helvetica, Ubuntu, roboto, noto, arial, sans-serif;
+  --font-serif: Iowan Old Style, Apple Garamond, Baskerville, Times New Roman,
+    Droid Serif, Times, Source Serif Pro, serif, Apple Color Emoji,
+    Segoe UI Emoji, Segoe UI Symbol;
+
+  font-family: Figtree, var(--font-sans-serif);
+  line-height: 150%;
+}
+
+body {
+  background-color: var(--yellow);
+  min-height: 100svh;
+  color: var(--grey-950);
+}
+
+.card-wrapper {
+  display: grid;
+  width: 100%;
+  min-height: 100svh;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-200);
+  place-self: center;
+  width: var(--card-width);
+  min-width: min-content;
+  padding: var(--spacing-200);
+  background-color: white;
+  border: 1px solid var(--color-gray-950, #111);
+  border-radius: 20px;
+  box-shadow: 8px 8px 0px 0px #000;
+
+  & img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+  & .card-content {
+    container: card / inline-size;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-150);
+
+    & .category {
+      width: fit-content;
+      font-weight: 800;
+      font-size: var(--text-preset-3);
+      background-color: var(--yellow);
+      padding-block: var(--spacing-50);
+      padding-inline: var(--spacing-150);
+      border-radius: 4px;
+
+      @container card (max-width: 350px) {
+        & {
+          font-size: clamp(0.75rem, 4cqw, 0.875rem);
+        }
+      }
+    }
+
+    & .published {
+      font-size: var(--text-preset-3);
+
+      @container card (max-width: 350px) {
+        & {
+          font-size: clamp(0.75rem, 4cqw, 0.875rem);
+        }
+      }
+    }
+
+    & .title {
+      font-size: var(--text-preset-1);
+      font-weight: 800;
+
+      @container card (max-width: 350px) {
+        & {
+          font-size: clamp(1.25rem, 5cqw, var(--text-preset-1));
+        }
+      }
+    }
+
+    & .title:hover {
+      @container card (max-width: 350px) {
+        & {
+          color: var(--yellow);
+        }
+      }
+    }
+
+    & .description {
+      font-size: var(--text-preset-3);
+      color: var(--grey-500);
+
+      @container card (max-width: 350px) {
+        & {
+          font-size: clamp(0.875rem, 4cqw, var(--text-preset-3));
+        }
+      }
+    }
+  }
+
+  & .card-author {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-150);
+    justify-content: flex-start;
+    font-weight: 800;
+    font-size: var(--text-preset-3);
+
+    img {
+      width: 32px;
+      height: 32px;
+      border-radius: 32px;
+    }
+  }
+}
